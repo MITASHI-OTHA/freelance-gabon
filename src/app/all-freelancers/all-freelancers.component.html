@@ -1,0 +1,136 @@
+<app-slide></app-slide>
+<div style="position: relative;height: 400px;">
+    <div class="parallax-windows">
+        <div>
+            <app-entete></app-entete>
+        </div>
+        <div style="text-align: center;margin-top: 14ex;">
+            <h1 style="font-family: buenosaires-bold;color: #fff;font-size: 48px;">Trouvez Le Freelancer pour votre projet</h1>
+        </div>
+
+        <div style="position: absolute;left: 0;right: 0;bottom: 0;width: 70%;margin: auto">
+            <div class="row col-search">
+                <div class="large-4 column">
+                    <div class="ui form">
+                        <div class="field">
+                            <label>Villes</label>
+                            <select class="ui search ville dropdown" style="z-index: 20" (change)="myalert($event)">
+                                <option *ngFor="let v of villes" [value]="v.Ville"> {{v.Ville}} </option>
+                              </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="large-4 column">
+                    <div class="ui form">
+                        <div class="field">
+                            <label>Categorie</label>
+                            <select class="ui search categorie dropdown">
+                                <option value="">Sélectionner une categorie</option>
+                                <option *ngFor="let cat of categorie" class="item" [value]="">{{cat.categorie}}</option>
+                              </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="large-4 column">
+                    <div class="field">
+                        <div> <b>Mot clé</b></div>
+                        <div>
+                            <div class="ui search" style="margin-top: 3px">
+                                <div class="ui icon input">
+                                    <input class="prompt" type="text" placeholder="Taper un mot clé">
+                                    <i class="search icon"></i>
+                                </div>
+                                <div class="results"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="large-12 column" style="padding-bottom: 13px;padding-top: 5px;position: relative">
+                        <button class="bnt-prix">Prix</button>
+                        <div class="col-price">
+                            <h5>Prix</h5>
+                            
+                                <div id="range"></div>
+                            <div>
+                                <ul>
+                                    <li>Effacer</li>
+                                    <li> Valider </li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+                <div class="button-count-freelancers">
+                        <span> plus de 400 freelancers </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="background: rgb(255, 255, 255)">
+<div class="row col-all-free" style="width: 78%;padding-top: 5ex;position: relative;">
+        <!-- <div class="large-12 column">
+                <ul class="list-push-freelancers">
+                        <li class="active" (click)="All()"> <span>Tous les Freelances </span> </li>
+                        <li (click)="byRec()"> <span>Freelancers recents </span> </li>
+                        <li (click)="byExp()"> <span>Les + experimentés</span> </li>
+                        <li (click)="byQualif()"> <span>Les + qualifiés</span></li>
+                        <li (click)="byBoost()"> <span>Les + Boostés</span></li>
+                    </ul>
+        </div> -->
+    <div class="large-3 column" *ngFor="let f of pagedItems; let last = last" style="margin-top:3ex;">
+        <span>{{last ? dimmers(): ''}}</span>
+        <div class="ui special cards">
+            <div class="card" style="box-shadow: 0 2px 12px rgba(0, 0, 0, .12)">
+                <div class="blurring dimmable image" style="background-color: #ffffff">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <div class="ui inverted button" (click)="seen(f.id, f.nom)">Voir sa fiche</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="label-dispo" style="z-index:9;filter: none;">
+                        <a class="ui label myh" [attr.data-content]="getStatusText(f.dispo, f.nom).texte">
+                            <a class="ui empty circular label" [ngClass]="{'green': f.dispo, 'red': !f.dispo}"></a>
+                            {{getStatusText(f.dispo, f.nom).status}}
+                        </a>
+                    </div>
+                    <img [ngStyle]="{'background': 'url('+ f.photo +') center no-repeat', 'background-size': 'cover', 'height': '298px'}">
+                </div>
+                <div>
+                    <div class="content" style="flex-grow: 0;padding-left: 7px;">
+                        <a class="header" style="color: #000">  {{f.nom}}</a>
+                        <div class="meta">
+                            <i class="fas fa-star" style="color: rgb(66, 133, 244)" *ngFor="let i of range(f.evaluation)"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <a class="ui label" *ngFor="let skill of f.expsp" style="padding:5px;float: left;margin: 2px;margin-left: 9px;">
+                                {{skill}}
+                        </a>
+                    </div>    
+                </div>
+                
+                <div class="row" style="margin: 0;margin: 0;position: absolute;left: 0;right: 0;bottom: 0;">
+                    <div class="large-6 column footer-card">
+                        <p [innerHTML]="getMetier(f.metier)"></p>
+                    </div>
+                    <div class="large-6 column footer-card" style="border-left: 2px solid #6666660a;">
+                        {{f.prix}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="position: relative;">
+    <div class="pagination-wrapper" *ngIf="pager.pages && pager.pages.length">
+        <div class="pagination">
+            <a class="prev page-numbers" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(1, occurence)" href="javascript:;">Premiere page</a>
+            <a class="page-numbers" href="javascript:;" *ngFor="let page of pager.pages" [ngClass]="{current:pager.currentPage === page}" (click)="setPage(page, occurence)"> {{page}} </a>
+            <a class="page-numbers" [ngClass]="{next:pager.currentPage === pager.totalPages}" (click)="setPage(pager.totalPages, occurence)">Dernière page</a>
+        </div>
+    </div>  
+</div>
+</div>
+<app-footer></app-footer>

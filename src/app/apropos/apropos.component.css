@@ -1,0 +1,9 @@
+.col-off {
+    background: #666;
+    padding-bottom: 11px;
+}
+
+.segment p {
+    line-height: 27px !important;
+    font-size: 11pt !important;
+}

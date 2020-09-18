@@ -1,0 +1,146 @@
+.st3 {
+    font-family: 'RobotoSlab-Regular';
+    fill: #080404;
+}
+
+.nav-top-right ul li {
+    color: #1b0e0e;
+}
+
+.col-proj {
+    width: 100%;
+}
+body {
+    
+    background: #9e9e9e33;
+}
+.col-proj-child {
+    margin: auto;
+}
+
+.col-sub-info {
+    width: 100%;
+    display: inline-flex
+}
+
+.col-info-child {
+    width: 20%;
+    background: #fff;
+    padding: 3ex;
+    border: 1px solid #66666612;
+    display: inline-flex
+}
+
+tr td {
+    padding: 3ex !important
+}
+
+th {
+    border: none !important
+}
+
+.col-detail {
+    padding: 3ex;
+    padding-top: 0px;
+    background: #fff;
+}
+
+.col-info-child font {
+    font-size: 16pt;
+    padding-right: 10px;
+    color: darkblue;
+}
+
+.side {
+    background: #fff;
+    padding: 3ex
+}
+
+.col-free-req {
+    margin-top: 5ex
+}
+
+.free-info {
+    display: inline-flex;
+}
+
+.free-name {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.hd- {
+    font-size: 12pt;
+    padding-top: 27px !important;
+}
+
+.col-head {
+    background: darkgray;
+}
+
+.info-rec span {
+    font-size: 13pt;
+    line-height: 28px;
+    margin-left: 23px
+}
+
+.side-info-employe {
+    display: inline-flex;
+}
+
+.info-name-empl {
+    display: grid;
+    margin-left: 2ex
+}
+
+#modalDevis {
+    width: 40%;
+    padding: 3ex;
+}
+
+.info-plus {
+    padding: 3ex;
+    border: 1px solid #66666614;
+    border-top: none;
+    display: inline-flex;
+    color: #666
+}
+
+.span-title {
+    margin: 0;
+    padding: 0;
+    line-height: 80px;
+    padding-left: 11px;
+    font-size: 12pt;
+}
+
+.info-plus i {
+    font-size: 22pt;
+}
+
+.info-plus div {
+    font-size: 13pt;
+    line-height: 28px;
+    margin-left: 12px;
+}
+
+.td-employ {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.st0 {
+    fill: #21409A;
+}
+
+.st1 {
+    fill: #FFF200;
+}
+
+.st2 {
+    fill: #00A14B;
+}
+
+.col-head {
+    padding-bottom: 3ex;
+}

@@ -1,0 +1,168 @@
+.profil-image {
+    height: 200px;
+    width: 200px;
+}
+
+.infos-user {
+    color: #666;
+    padding: 2ex !important;
+    background: #e8e8ec !important;
+    margin-top: 7px !important;
+}
+
+.col-load {
+    display: grid;
+    text-align: center;
+    text-align: center;
+    background: #6666660f;
+    padding: 9px;
+    padding-bottom: 0;
+}
+
+.invisible {
+    display: none !important
+}
+
+.spinner div {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: -20px;
+    top: 40px;
+    background-color: #333;
+    border-radius: 50%;
+    animation: move 4s infinite cubic-bezier(.2, .64, .81, .23);
+}
+
+.loading {
+    position: relative;
+    overflow-x: hidden;
+    height: 200px;
+    background: #66666624;
+    width: 100%
+}
+
+.spinner div:nth-child(2) {
+    animation-delay: 150ms;
+}
+
+.spinner div:nth-child(3) {
+    animation-delay: 300ms;
+}
+
+.spinner div:nth-child(4) {
+    animation-delay: 450ms;
+}
+.loading {
+    display: flex;
+}
+.loadingio-spinner-spin-gho3sreyi1d {
+    margin: auto;
+}
+@keyframes ldio-8opqdkau3pw {
+    0% {
+      opacity: 1;
+      backface-visibility: hidden;
+      transform: translateZ(0) scale(2.8299999999999996,1);
+    } 100% {
+      opacity: 0;
+      backface-visibility: hidden;
+      transform: translateZ(0) scale(1,1);
+    }
+  }
+  .ldio-8opqdkau3pw div > div {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #2cf37c;
+    animation: ldio-8opqdkau3pw 0.9803921568627451s linear infinite;
+  }.ldio-8opqdkau3pw div:nth-child(1) > div {
+    left: 83px;
+    top: 46px;
+    animation-delay: -0.8714596949891068s;
+  }
+  .ldio-8opqdkau3pw > div:nth-child(1) {
+    transform: rotate(0deg);
+    transform-origin: 87px 50px;
+  }.ldio-8opqdkau3pw div:nth-child(2) > div {
+    left: 74px;
+    top: 70px;
+    animation-delay: -0.7625272331154684s;
+  }
+  .ldio-8opqdkau3pw > div:nth-child(2) {
+    transform: rotate(40deg);
+    transform-origin: 78px 74px;
+  }.ldio-8opqdkau3pw div:nth-child(3) > div {
+    left: 52px;
+    top: 82px;
+    animation-delay: -0.6535947712418301s;
+  }
+  .ldio-8opqdkau3pw > div:nth-child(3) {
+    transform: rotate(80deg);
+    transform-origin: 56px 86px;
+  }.ldio-8opqdkau3pw div:nth-child(4) > div {
+    left: 28px;
+    top: 78px;
+    animation-delay: -0.5446623093681917s;
+  }
+  .ldio-8opqdkau3pw > div:nth-child(4) {
+    transform: rotate(120deg);
+    transform-origin: 32px 82px;
+  }.ldio-8opqdkau3pw div:nth-child(5) > div {
+    left: 11px;
+    top: 59px;
+    animation-delay: -0.4357298474945534s;
+  }
+  .ldio-8opqdkau3pw > div:nth-child(5) {
+    transform: rotate(160deg);
+    transform-origin: 15px 63px;
+  }.ldio-8opqdkau3pw div:nth-child(6) > div {
+    left: 11px;
+    top: 33px;
+    animation-delay: -0.32679738562091504s;
+  }
+  .ldio-8opqdkau3pw > div:nth-child(6) {
+    transform: rotate(200deg);
+    transform-origin: 15px 37px;
+  }.ldio-8opqdkau3pw div:nth-child(7) > div {
+    left: 27px;
+    top: 14px;
+    animation-delay: -0.2178649237472767s;
+  }
+  .ldio-8opqdkau3pw > div:nth-child(7) {
+    transform: rotate(240deg);
+    transform-origin: 31px 18px;
+  }.ldio-8opqdkau3pw div:nth-child(8) > div {
+    left: 52px;
+    top: 10px;
+    animation-delay: -0.10893246187363835s;
+  }
+  .ldio-8opqdkau3pw > div:nth-child(8) {
+    transform: rotate(280deg);
+    transform-origin: 56px 14px;
+  }.ldio-8opqdkau3pw div:nth-child(9) > div {
+    left: 74px;
+    top: 22px;
+    animation-delay: 0s;
+  }
+  .ldio-8opqdkau3pw > div:nth-child(9) {
+    transform: rotate(320deg);
+    transform-origin: 78px 26px;
+  }
+  .loadingio-spinner-spin-gho3sreyi1d {
+    width: 71px;
+    height: 71px;
+    display: inline-block;
+    overflow: hidden;
+    background: none;
+  }
+  .ldio-8opqdkau3pw {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: translateZ(0) scale(0.71);
+    backface-visibility: hidden;
+    transform-origin: 0 0; /* see note above */
+  }
+  .ldio-8opqdkau3pw div { box-sizing: content-box; }

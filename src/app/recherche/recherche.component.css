@@ -1,0 +1,42 @@
+.col-off {
+    padding-bottom: 1ex
+}
+
+.parallax-windows {
+    min-height: 100%;
+    background: transparent;
+}
+
+.card {
+    width: 90% !important;
+}
+
+.head {
+    background: #66666657
+}
+
+.text-intro {
+    text-align: center;
+    color: #fff;
+    margin-top: 5ex
+}
+
+.list-button ul {
+    list-style: none;
+}
+
+.list-button li {
+    display: inline !important;
+}
+
+.massive.ui.button {
+    font-size: 1.71428571rem;
+    background: transparent !important;
+    border: 1px solid #fff !important;
+    border-radius: 38px !important;
+    color: #fff !important;
+}
+
+.slick-prev {
+    left: 0 !important;
+}

@@ -1,0 +1,81 @@
+<div style="position: relative;">
+    <div class="hamburger hamburger--spin js-hamburger h3 nav-mobil js-left" tabindex="0" aria-label="Menu" role="button" aria-controls="navigation" href="#left" data-button-options='{"wrapText":false}'>
+        <div class="hamburger-box">
+            <div class="hamburger-inner"></div>
+        </div>
+    </div>
+    <div id="tete">
+        <div routerLink="/" style="cursor: pointer;">
+            <svg _ngcontent-c2="" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" id="Calque_1" style="enable-background:new 0 0 115 311;width: 165px;height: 54px;" version="1.1" viewBox="-100 100 1254 55" x="100px" xmlns="http://www.w3.org/2000/svg"
+                y="100px"><path _ngcontent-c2="" class="st0" d="M326,311H94c-6.6,0-12-5.4-12-12V49c0-6.6,5.4-12,12-12h232c6.6,0,12,5.4,12,12v250
+    C338,305.6,332.6,311,326,311z" id="XMLID_4_"></path><path _ngcontent-c2="" class="st1" d="M284,292H52c-6.6,0-12-5.4-12-12V30c0-6.6,5.4-12,12-12h232c6.6,0,12,5.4,12,12v250
+    C296,286.6,290.6,292,284,292z" id="XMLID_3_"></path><path _ngcontent-c2="" class="st2" d="M244,274H12c-6.6,0-12-5.4-12-12V12C0,5.4,5.4,0,12,0h232c6.6,0,12,5.4,12,12v250
+    C256,268.6,250.6,274,244,274z" id="XMLID_1_"></path><text _ngcontent-c2="" class="st3 st4" id="XMLID_43_" transform="matrix(1 0 0 1 351 224)">freelance GA</text></svg>
+        </div>
+        <div class="nav-top-left">
+            <ul>
+                <li routerLink="/">
+                    Accueil
+                </li>
+                <li class="scrollFree">
+                    Freelancers
+                </li>
+                <li class="scrollProject">
+                    Tous les projets
+                </li>
+            </ul>
+        </div>
+        <div class="nav-top-right" [ngClass]="{'styleUser': Auth}" style="cursor: pointer;">
+            <ul>
+                <li class="propos">
+                    A propos
+                </li>
+                <li *ngIf='!Auth' routerLink="condition d'utilisation">
+                    Condition d'utilisation
+                </li>
+                <li *ngIf='Auth' style="display: inline-flex;position: relative;padding-left: 63px">
+                        <div style="cursor: pointer;display: flex" (click)="slideProfil()">
+                            <div class="caption-image" [ngStyle]="{'background-image': 'url('+avatar+')'}"></div>
+                            <span style="color: #fff;margin: auto;font-size: 18px;"> {{controlName(userName)}}</span>
+                        </div>
+                    <div class="popup" *ngIf="tuto">
+                        <p>
+                            Clic sur cette image pour afficher ton menus
+                        </p>
+                        <div style="text-align: center">
+                            <button class="mini ui button" (click)="changeSkill()"> Ne plus me rappler </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<aside class=".js-offcanvas" id="left" role="complementary">
+
+</aside>
+<div class="ui modal" id="condition">
+    <i class="close icon"></i>
+    <div class="header">
+        Profile Picture
+    </div>
+    <div class="image content">
+        <div class="ui medium image">
+            <img src="/images/avatar/large/chris.jpg">
+        </div>
+        <div class="description">
+            <div class="ui header">We've auto-chosen a profile image for you.</div>
+            <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
+            <p>Is it okay to use this photo?</p>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui black deny button">
+            Nope
+        </div>
+        <div class="ui positive right labeled icon button">
+            Yep, that's me
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>

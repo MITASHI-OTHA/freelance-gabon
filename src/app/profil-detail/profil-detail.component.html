@@ -1,0 +1,109 @@
+<div class="succes--">
+    <div class="ui positive message">
+        <i class="close icon"></i>
+        <div class="header"> {{headInfos}} </div>
+        <p> {{footerInfos}} </p>
+    </div>
+</div>
+<div class="row" style="margin:0;background: #f8f8f9;">
+    <div class="large-4 column col-info-warn">
+        <!-- profil user component -->
+        <app-profil-user [message]="message" [head]="head" [color]="color"></app-profil-user>
+    </div>
+    <div class="large-8 column" style="background: #ffffff;padding-bottom:1ex;padding-top: 3ex">
+        <form class="ui form" (ngSubmit)="onSubmit(form)" #form="ngForm">
+            <div class="row">
+                <div class="large-12 column">
+                    <div class="fields">
+                        <div class="field">
+                            <label>Ton Titre professionnel</label>
+                            <input type="text" name="titre" placeholder="Quel est ton titre professionnel ?" ngModel required>
+                        </div>
+                    </div>
+                </div>
+                <div class="large-12 column">
+                    <div class="fields">
+                        <div class="field">
+                            <label>Ton prix par heure ou jour</label>
+                            <!-- <div style="display: inline-flex">
+                                <input style="border-radius: 0px" type="number" min="1" max="9999" placeholder="Par exemple: 5000Fcfa" name="prix" ngModel required>
+                                <div class="ui dropdown item">
+                                    <font> par {{price}} </font> <i class="dropdown icon"></i>
+                                    <div class="menu">
+                                        <a class="item" (click)="prices($event)">jour</a>
+                                        <a class="item" (click)="prices($event)">heure</a>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!--  -->
+                            <div class="ui right labeled input" style="width: 70%">
+                                <input type="number" min="1" max="9999" placeholder="Par exemple: 5000Fcfa" name="prix" ngModel required>
+                                <div class="ui dropdown label">
+                                  <div class="text unite">Jour</div>
+                                  <i class="dropdown icon"></i>
+                                  <div class="menu">
+                                    <div class="item">Heure</div>
+                                    <div class="item">Semaine</div>
+                                    <div class="item">Mois</div>
+                                    <div class="item">Jour</div>
+                                  </div>
+                                </div>
+                              </div>
+
+                            <!--  -->
+                        </div>
+                    </div>
+                </div>
+                <div class="large-12 column">
+                    <div class="field">
+                        <label>Quelles sont tes competences (4 maxi)?</label>
+                        <div class="ui fluid multiple search selection dropdown">
+                            <input #max type="hidden" name="maxCount" [ngModel]="max.value" required>
+                            <i class="dropdown icon"></i>
+                            <div class="default text">Rien du tout</div>
+                            <div class="menu">
+                                <div *ngFor="let competences of competence" class="item" [attr.data-value]="competences.competence" [attr.data-text]="competences.competence"> {{competences.competence}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="large-12 column" style="margin-top: 11px">
+                    <div class="field">
+                        <label>Categorie</label>
+                        <div class="ui selection dropdown">
+                            <input #cat type="hidden" name="categorie" [ngModel]="cat.value" required>
+                            <i class="dropdown icon"></i>
+                            <div class="default text">Rien du tout</div>
+                            <div class="menu">
+                                <div *ngFor="let cat of categorie" class="item" [attr.data-value]="cat.id">{{cat.categorie}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="large-12 column" style="margin-top: 11px">
+                    <b> <label>A propos de toi</label> </b>
+                    <div style="margin-top:5px">
+                        <div id="editor">
+                        </div>
+                        <div class="ui pointing red basic label" *ngIf="apropos"> Dis quelques chose à propos de toi </div>
+                    </div>
+                </div>
+                <div class="large-12 column" style="margin-top: 1em">
+                    <div class="fields">
+                        <div class="field">
+                            <label>Ton experience</label>
+                            <input type="number" min="0" placeholder="Combien d'année d'experience as-tu ?" style="width: 70%" name="experience" ngModel required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button class="ui green button" [disabled]="form.invalid">Enregistrer les changements</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- popup image -->
+<app-popup-windown></app-popup-windown>
+<!-- fin -->

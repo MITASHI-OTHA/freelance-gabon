@@ -1,0 +1,127 @@
+<app-slide></app-slide>
+<div style="height: 600px;">
+    <div class="parallax-windows">
+        <div class="head">
+            <app-entete></app-entete>
+        </div>
+        <div class="text-intro">
+            <h1 style="font-family: buenosaires-bold;font-size: 45pt;">{{call}} freelances</h1>
+            <h2>Travaillez votre projet avec les meuilleure freelanceurs Gabonais</h2>
+            <ul class="list-button">
+                <li>
+                    <button class="massive ui button">
+                      Freelance dispos
+                    </button>
+                </li>
+                <li>
+                    <button class="massive ui button">
+                      Tarifs
+                    </button>
+                </li>
+                <li>
+                    <button class="massive ui button">
+                      Les plus notés
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div style="width: 100%;text-align: center;">
+            <img src="../assets/stars.svg" alt="">
+            <p style="font-size: 25pt;color: #fff;font-family: roboto condensed;"> {{count}} Résultats trouvés pour votre recherche</p>
+        </div>
+    </div>
+</div>
+<div class="ui negative  icon message" style="margin-left: 3ex;width: 70%;" *ngIf="!result">
+    <i class="fas fa-exclamation" style="font-size: 48px;"></i>
+    <div class="content" style="margin-left: 1ex">
+        <div class="header">
+            <p> {{texte}} </p>
+        </div>
+    </div>
+</div>
+<section style="display: flex;margin-top: 5em" *ngIf="result">
+    <div style="margin: auto;width: 70%">
+        <h2>Tous les Freelancers <b> {{call}}</b> </h2>
+        <div class="slider silde1">
+            <div class="ui special cards image" *ngFor="let f of users; let last = last">
+                {{last ? initSlick() : ''}} {{last ? dimmers() : ''}}
+                <div class="card">
+                    <div class="blurring dimmable image">
+                        <div class="ui dimmer">
+                            <div class="content">
+                                <div class="center">
+                                    <div class="ui inverted button" (click)="seen(f.id, f.nom)">Voir sa fiche</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="label-dispo" style="z-index:9;filter: none;">
+                            <a class="ui label myh" [attr.data-content]="getStatusText(f.dispo, f.nom).texte">
+                                <a class="ui empty circular label" [ngClass]="{'green': f.dispo, 'red': !f.dispo}"></a>
+                                {{getStatusText(f.dispo, f.nom).status}}
+                            </a>
+                        </div>
+                        <img [ngStyle]="{'background': 'url('+ f.photo +') center no-repeat', 'background-size': 'cover', 'height': '298px'}">
+                    </div>
+                    <div class="content" style="flex-grow: 0">
+                        <a class="header"> {{f.nom}}</a>
+                        <div class="meta">
+                            <i class="fas fa-star" style="color: rgb(66, 133, 244)" *ngFor="let i of range(f.evaluation)"></i>
+                        </div>
+                    </div>
+                    <div class="row" style="margin: 0;margin: 0;left: 0;right: 0;bottom: 0;">
+                        <div class="large-6 column footer-card" style="border-right: 2px solid #f1f1f1; padding: 5px;">
+                            <p [innerHTML]="getMetier(f.metier)"></p>
+                        </div>
+                        <div class="large-6 column footer-card" style="padding: 5px">
+                            {{f.prix}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="display: flex;margin-top: 5em" *ngIf="result">
+    <div style="margin: auto;width: 70%">
+        <h2>Les Freelancers <b> {{call}} les mieux notés</b> <i class="fas fa-star" style="font-size: 27px;color: rgb(66, 133, 244);"></i> </h2>
+        <div class="slider silde2">
+            <div class="ui special cards image" *ngFor="let q of Notest; let der = last">
+                {{der ? initSlick2() : ''}} {{der ? dimmers() : ''}}
+                <div class="card">
+                    <div class="blurring dimmable image">
+                        <div class="ui dimmer">
+                            <div class="content">
+                                <div class="center">
+                                    <div class="ui inverted button" (click)="seen(q.id, q.nom)">Voir sa fiche</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="label-dispo" style="z-index:9;filter: none;">
+                            <a class="ui label myh" [attr.data-content]="getStatusText(q.dispo, q.nom).texte">
+                                <a class="ui empty circular label" [ngClass]="{'green': q.dispo, 'red': !q.dispo}"></a>
+                                {{getStatusText(q.dispo, q.nom).status}}
+                            </a>
+                        </div>
+                        <img [ngStyle]="{'background': 'url('+ q.photo +') center no-repeat', 'background-size': 'cover', 'height': '298px'}">
+                    </div>
+                    <div class="content" style="flex-grow: 0">
+                        <a class="header"> {{q.nom}}</a>
+                        <div class="meta">
+                            <i class="fas fa-star" style="color: rgb(66, 133, 244)" *ngFor="let i of range(q.evaluation)"></i>
+                        </div>
+                    </div>
+                    <div class="row" style="margin: 0;margin: 0;left: 0;right: 0;bottom: 0;">
+                        <div class="large-6 column footer-card" style="border-right: 2px solid #f1f1f1;padding: 5px">
+                            <p [innerHTML]="getMetier(q.metier)"></p>
+                        </div>
+                        <div class="large-6 column footer-card" style="padding: 5px">
+                            {{q.prix}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

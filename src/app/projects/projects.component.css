@@ -1,0 +1,259 @@
+.sect-proj {
+    width: 100%;
+    display: flex;
+    margin-top: 1em;
+}
+.col-model {
+    list-style: none;
+    margin: 0px !important;
+    float: right
+}
+.col-model li {
+   display: inline;
+   font-size: 20px;
+   padding: 8px;
+   cursor: pointer;
+}
+.col-model li.active {
+   background: #909fcc;
+   border-radius: 20px;
+   box-shadow: -3px 2px 8px 0px #010401;
+}
+.col-model li:hover {
+ }
+.col-model li i {
+    color: #314a5f;
+ }
+.col-model li:nth-of-type(1) {
+    margin-right: 10px
+ }
+h2 {
+    font-size: 26pt;
+    color: #343a5e;
+    font-weight: bold;
+}
+
+.list-metier ul {
+    list-style: none !important;
+}
+
+.list-metier ul li {
+    line-height: 4ex;
+    font-size: 13pt;
+    color: #646475;
+}
+.scrollUsers {
+    display: flex;
+    background: #cccccc1c;
+    padding-bottom: 7ex;
+    margin-top: 7ex;
+}
+.footer-card {
+    padding: 1ex;
+    background: #6666660a;
+    text-align: center;
+}
+
+.footer-col-card {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0;
+    bottom: 0;
+    clear: both;
+}
+
+[hidden] {
+    display: none
+}
+
+.tab-project {
+    width: 90%;
+    margin: auto;
+}
+
+.col-free-append {
+    margin: auto;
+    width: 70%;
+    margin-top: 8ex;
+}
+@media(min-width: 1600px) {
+    .col-free-append {
+        width: 80% !important
+    }
+    .tab-project {
+        width: 80% !important;
+    }
+}
+@media(min-width: 1500px) {
+    .col-free-append {
+        width: 80% !important
+    }
+    .tab-project {
+        width: 80% !important;
+    }
+}
+@media(min-width: 1147px) {
+    .col-free-append {
+        width: 90%
+    }
+}
+
+.ui-widget-content span {
+    display: none !important;
+}
+
+@media (min-width: 1400px) {
+    .col-free-append {
+        width: 80%;
+    }
+    .tab-project {
+        width: 80%;
+    }
+}
+.haut {
+    margin-top: 8em
+}
+@media (min-width: 1500px) {
+    .col-free-append {
+        width: 90%;
+    }
+    .tab-project {
+        width: 90%;
+    }
+}
+
+.view-next-arrow {
+    display: flex;
+    cursor: pointer;
+}
+.view-next-arrow p {
+    font-size: 17px;
+    padding-right: 8px;
+    color: #34d21e;
+    margin: 0;
+    /* padding: 0; */
+    margin-top: 17px;
+}
+.view-next-arrow i {
+    font-size: 28px;
+    color: #3de426;
+    margin-top: 15px;
+}
+.col-liste {
+    height: 400px;
+}
+.job-listing-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.job-listing-footer ul li {
+    display: inline-block;
+    margin-right: 9px;
+}
+.job-listing-footer ul li i {
+    margin-right: 3px;
+    color: #777;
+}
+
+.job-list-detail {
+    flex: 1;
+    display: flex
+}
+.show {
+    display: none
+}
+.view-job-btn {
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s;
+}
+.job-list {
+    padding: 30px 35px;
+    display: flex;
+}
+.job-listing-footer {
+    background-color: transparent;
+    padding: 0;
+    margin-top: 3px;
+    border-radius: 0 0 4px 4px;
+    position: relative;
+}
+.gray {
+    background: rgb(235, 235, 235)
+}
+.job-listing-company-logo {
+    max-width: 50px;
+    margin-right: 30px;
+    top: 0;
+    flex: 1;
+    position: relative;
+}
+.job-listing-title {
+    margin: 0 !important;
+    font-size: 17px;
+    line-height: 28px; 
+}
+.job-listing-description {
+    flex: 1;
+    padding-top: 3px;
+}
+.sub-list {
+    padding-left: 0;
+    padding-right: 0
+}
+.column:last-child:not(:first-child),
+.columns:last-child:not(:first-child) {
+    float: left !important;
+}
+
+.tab-tab-project table {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    border-radius: 0px;
+    border-top: 0 solid #ff1f87;
+    border-radius: 33px 33px 0 0;
+}
+td span h4 {
+    margin-top: 0px
+}
+.tab-list-proj.ui.table thead th {
+    background: #ff1f87 !important;
+    color: #fff
+}
+.page-- a:hover {
+    text-decoration: underline
+}
+.tab-list-proj.ui.table tbody tr td:first-of-type {
+    display: grid;
+    line-height: 24px;
+}
+
+.tab-list-proj.ui.table tbody tr td h3 {
+    padding-top: 0 !important;
+    margin-top: 0;
+    font-weight: 1000;
+    color: darkblue;
+    margin-bottom: 0;
+}
+
+.time-pub {
+    display: inline-flex;
+    opacity: 0.5;
+}
+
+.time-pub i {
+    line-height: 25px;
+    padding-right: 1ex;
+}
+
+.budget h4 {
+    color: darkblue;
+}
+@media(max-width: 1506px) {
+    .ui.cards>.card .meta *, .ui.card .meta * {
+        font-size: 7pt !important; 
+    }
+}

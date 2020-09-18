@@ -1,0 +1,245 @@
+<app-slide [default]="avatar"></app-slide>
+<div class="col-head">
+    <app-entete [avatar]="avatar" [Auth]="Auth" [userName]="name"></app-entete>
+</div>
+<section>
+    <!-- modal  connexion-->
+    <div class="ui modal" id="popup" style="width:40%;">
+        <div class="row">
+            <div class="large-7 column col-right-connect" id="col-right-connect" style="padding: 0;">
+                <div class="col-form">
+                    <form (ngSubmit)="onSubmit(forms)" #forms="ngForm">
+                        <div class="ui form" style="padding: 13px">
+                            <h2 style="margin: 0;text-align: center;margin-bottom: 12px;">Connectes-toi</h2>
+                            <div class="ui yellow message" style="margin: 0">Seuls les Freelancers peuvent faire un devis .</div>
+                            <div class="fields" style="display:grid;line-height: 6ex;margin: 0;">
+                                <div class="field" style="padding: 0" [ngClass]="{'error': error}">
+                                    <label>Quel est ton émail</label>
+                                    <input name="email" type="email" placeholder="Ton émail" style="width: 80%" ngModel required>
+                                </div>
+                                <div class="field" style="padding: 0" [ngClass]="{'error': error}">
+                                    <label>Quel est ton mot de passe ?</label>
+                                    <input type="password" name="password" placeholder="Ton mot de passe" style="width: 80%" ngModel required>
+                                </div>
+                                <div class="field">
+                                    <div class="ui checkbox">
+                                        <input type="checkbox" tabindex="0" class="hidden">
+                                        <label>Rester connecter</label>
+                                    </div>
+                                </div>
+                                <button class="ui green button" [disabled]="forms.invalid" style="width: 40%;">Connexion</button>
+                                <div id="click" class="field" style="margin-top: 7px">
+                                    <div class="ui breadcrumb">
+                                        <a class="section">Créer un compte</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="large-5 column girl-background" style="overflow: hidden;padding: 0;">
+                <img class="img-right" src="../assets/Freelance-Gabon-femme-bureau-connect.jpg" style="height:300px;height: 418px" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- fin -->
+    <!-- modal devis -->
+    <!-- <app-modal-devis [idProj]="iDRoute"></app-modal-devis> -->
+    <div class="ui modal" id="modalDevis">
+        <i class="close icon"></i>
+        <div class="row">
+            <div class="large-12 column">
+                <h2 style="margin:0;margin-bottom: 2ex;">Ton Devis</h2>
+                <div class="ui red message" *ngIf="warn"> {{message}} </div>
+                <form (ngSubmit)="onSubmits(form)" class="ui form" style="display: grid" #form="ngForm">
+                    <div class="field">
+                        <label>Ton prix</label>
+                        <input type="number" name="prix" placeholder="Quel est ton prix pour realiser ce projet ?" min="1" ngModel required>
+                    </div>
+                    <div style="display: inline-flex;">
+                        <div class="field">
+                            <label>Durée de réalisation</label>
+                            <input type="number" name="duree" placeholder="En combien de temps ?" min="1" ngModel required>
+                        </div>
+                        <div class="field" style="margin-left: 3ex">
+                            <label>Donne le temps</label>
+                            <select name="temps" required ngModel>
+                                <option value="jour">En jour</option>
+                                <option value="heure">En heure</option>
+                                <option value="semaine">En semaine</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Note</label>
+                        <textarea name="note" ngModel required></textarea>
+                    </div>
+                    <button class="ui green button" [disabled]='form.invalid || inactive' style="width: 30%">Envoyer mon devis</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- fin -->
+    <div class="col-proj">
+        <div class="col-proj-child">
+            <div class="row" style="display: flex">
+                <div class="large-12 column" style="width: 80%;margin: auto">
+                    <table class="ui basic table" style="border:none;margin-bottom:0">
+                        <thead>
+                            <tr>
+                                <th>Titre du projet</th>
+                                <th>Par</th>
+                                <th>Date de publication</th>
+                                <th>Budget</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody style="background: #fff">
+                            <tr>
+                                <td style="display: inline-flex">
+                                    <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="300 265.9 338 311" style="enable-background:new 300 265.9 338 311;width: 40px;height: 80px;" xml:space="preserve">
+                                            <path id="XMLID_4_" class="st0" d="M626,576.9H394c-6.6,0-12-5.4-12-12v-250c0-6.6,5.4-12,12-12h232c6.6,0,12,5.4,12,12v250
+                                            C638,571.5,632.6,576.9,626,576.9z"/>
+                                            <path id="XMLID_3_" class="st1" d="M584,557.9H352c-6.6,0-12-5.4-12-12v-250c0-6.6,5.4-12,12-12h232c6.6,0,12,5.4,12,12v250
+                                            C596,552.5,590.6,557.9,584,557.9z"/>
+                                            <path id="XMLID_1_" class="st2" d="M544,539.9H312c-6.6,0-12-5.4-12-12v-250c0-6.6,5.4-12,12-12h232c6.6,0,12,5.4,12,12v250
+                                            C556,534.5,550.6,539.9,544,539.9z"/>
+                                        </svg>
+                                    <span class="span-title">{{titre}}</span>
+
+
+                                </td>
+                                <td>{{auteur}}</td>
+                                <td>{{dates}}</td>
+                                <td>{{budget}}</td>
+                                <td><button class="positive ui button" [disabled]="disabel" (click)="Getdevis()">Faire un Devis </button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="col-sub-info">
+                        <div class="col-info-child">
+                            <font>0</font> <span>Commentaires</span>
+                        </div>
+                        <div class="col-info-child">
+                            <font>1</font> <span>Devis</span>
+                        </div>
+                        <div class="col-info-child">
+                            <font>{{budget}} Fcfa</font>
+                            <span>Moyenne de devis</span>
+                        </div>
+                        <div class="col-info-child">
+                            <font>ouvert</font> <span> {{relatif}} </span>
+                        </div>
+                        <div class="col-info-child">
+                            <i class="fab fa-facebook-f" style="font-size: 18px;"></i> <span style="margin-left: 7px">Partager</span>
+                        </div>
+                    </div>
+                    <div class="col-detail">
+                        <div class="row">
+                            <div class="large-8 column">
+                                <h3>Description du projet</h3>
+                                <p [innerHTML]="description">
+                                </p>
+                            </div>
+                            <div class="large-4 column">
+                                <h3>Competences requises</h3>
+                                <a class="ui yellow label" *ngFor="let cpt of competences"> {{cpt}} </a>
+                                <h3>Categorie</h3>
+                                <a class="ui tag label">{{categorie}}</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-free-req">
+                        <div class="row">
+                            <div class="large-7 column">
+                                <div class="side">
+                                    <table class="ui very basic table">
+                                        <thead class="th-free">
+                                            <tr>
+                                                <th class="" style="width: 159px">Devis de freelancers ({{devis}}) </th>
+                                                <th class="center aligned">Reputation</th>
+                                                <th class="center aligned">status du devis</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let free of devisFree">
+                                                <td class="free-info" style="display: grid;text-align: center;cursor: pointer;outline: none" [routerLink]="['/', free.FreeID, free.FreeNom]">
+                                                    <div class="ui tiny images">
+                                                        <img class="ui image" src="{{free.FreePhoto}}">
+                                                    </div>
+                                                    <div>
+                                                        <div class="free-name">{{free.FreeNom}}</div>
+                                                    </div>
+                                                </td>
+                                                <td class="center aligned">
+                                                    <i class="fas fa-star" *ngFor="let start of range(free.evaluation)"></i>
+                                                </td>
+                                                <td class="center aligned">{{free.status}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                            <div class="large-5 column">
+                                <div style="background: #fff">
+                                    <table class="ui very basic table">
+                                        <thead class="th-free">
+                                            <tr>
+                                                <th class="center aligned hd-">A propos de l'employeur</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngFor="let rec of recruteur" class="info-rec">
+                                            <tr>
+                                                <td class="td-employ" style="padding-left: 0 !important;
+                                                padding-right: 0 !important;">
+                                                    <div class="side-info-employe" style="margin-left:6ex">
+                                                        <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="300 265.9 338 311" style="enable-background:new 300 265.9 338 311;width: 40px;height: 80px;" xml:space="preserve">
+                                                    <path id="XMLID_4_" class="st0" d="M626,576.9H394c-6.6,0-12-5.4-12-12v-250c0-6.6,5.4-12,12-12h232c6.6,0,12,5.4,12,12v250
+                                                    C638,571.5,632.6,576.9,626,576.9z"/>
+                                                    <path id="XMLID_3_" class="st1" d="M584,557.9H352c-6.6,0-12-5.4-12-12v-250c0-6.6,5.4-12,12-12h232c6.6,0,12,5.4,12,12v250
+                                                    C596,552.5,590.6,557.9,584,557.9z"/>
+                                                    <path id="XMLID_1_" class="st2" d="M544,539.9H312c-6.6,0-12-5.4-12-12v-250c0-6.6,5.4-12,12-12h232c6.6,0,12,5.4,12,12v250
+                                                    C556,534.5,550.6,539.9,544,539.9z"/>
+                                                    </svg>
+                                                        <div class="info-name-empl">
+                                                            <h3 style="margin-bottom: 0px">{{rec.nom}}</h3>
+                                                            <span style="font-size:10pt;color: #666;line-height: 0px;margin-left: 0px">
+                                                                Membre depuis {{rec.inscription}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="" style="display: grid">
+                                                        <div class="info-plus">
+                                                            <i class="fas fa-map-marker-alt"></i>
+                                                            <div> Ville </div> <span> {{rec.ville}} </span>
+                                                        </div>
+                                                        <div class="info-plus">
+                                                            <i class="fas fa-money-bill-alt"></i>
+                                                            <div> Depense total </div>
+                                                        </div>
+                                                        <div class="info-plus">
+                                                            <i class="fas fa-briefcase"></i>
+                                                            <div> Projet posté </div> <span> {{rec.projets}} </span>
+                                                        </div>
+                                                        <div class="info-plus">
+                                                            <i class="fas fa-handshake"></i>
+                                                            <div>Embauche </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

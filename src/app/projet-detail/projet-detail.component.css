@@ -1,0 +1,20 @@
+.item-projet {
+    background: #66666612;
+    padding: 1ex;
+    margin-top: 1ex;
+    border-radius: 8px;
+    margin-bottom: 1ex;
+}
+
+.item-projet h2 {
+    margin: 0 !important
+}
+
+.empt {
+    display: flex
+}
+
+.empt h1 {
+    margin: auto !important;
+    text-align: center
+}

@@ -1,0 +1,101 @@
+<app-slide></app-slide>
+<div class="bkHeader">
+    <app-entete></app-entete>
+</div>
+<div class="row" style="margin-top:12em">
+    <h1 id="monH">Mes informations</h1>
+    <div class="ui info message" style='width:60%;margin-left: 9ex;'>
+        <i class="close icon"></i>
+        <div class="header">Edite ton profil</div>
+        <p>
+            Edite ton profil en parcourant chaque onglet en dessous. Ajoute ta ville, ta photo de profil, ce que tu sais faire, et dis à <b>quel prix par heure tu facture tes services</b>.
+        </p>
+    </div>
+    <div class="large-8 column">
+        <div class="list-actions-user">
+            <div class="sub-list-actions-user">
+                <div class="row" style="margin: 0;border-bottom: 2px solid #66666617;">
+                    <!-- le outlet renvois à quelle Outlet je veux utiliser, ensuite vers quelle route aller, regarde dans app Module les children de la route tu veras le outlet associé. En dessous de cette page j'ai ajouté un router-outlet avec un attribut name qui se rattache aux enfants -->
+                    <div class="large-4 column items-user activate" [routerLink]="[{outlets: { aux: ['details compte'] } }]">
+                        <div class="items-use">
+                            <i class="fas fa-list-alt" style="font-size: 48px;"></i>
+                            <h3>Detail du compte</h3>
+                        </div>
+                    </div>
+                    <div class="large-4 column middle-item items-user prf" [routerLink]="[{outlets: { aux: ['details du profil'] } }]">
+                        <div class="items-use">
+                            <i class="fas fa-user-tie" style="font-size: 48px;"></i>
+                            <h3>Detail du profil</h3>
+                        </div>
+                    </div>
+                    <div class="large-4 column items-user" [routerLink]="[{outlets: { aux: ['details du projet'] } }]">
+                        <div class="items-use">
+                            <i class="fas fa-file-signature" style="font-size: 48px;"></i>
+                            <h3>Detail de tes projets</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 column">
+                        <router-outlet name="aux"></router-outlet>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="large-4 column" style="padding-right: 1.9375rem;">
+        <div class="pane-right">
+            <div class="row">
+                <div class="large-12 column">
+                    <h2 style="text-align: center;padding-bottom: 2ex;">Es-tu disponible pour travailler ?</h2>
+                    <div style="position: relative;text-align: center">
+                        <div class="check ok" style="position: relative;margin-left: 0">
+                            <span><input type="checkbox" name="checkbox" [checked]="positives"></span>
+                        </div>
+                    </div>
+                    <div class="ui small message" style="width: 90%;margin:auto">
+                        Selectionne le bouton vert pour afficher un status <b>' Disponible '</b> sur ta fiche permettant aux clients potentiels et aux employeurs de communiquer avec toi.
+                    </div>
+                    <div class="last-action" style="border-bottom: 1px solid rgba(102, 102, 102, 0.14);">
+                        <span>Changer de mot de passe</span>
+                    </div>
+                    <div class="last-action">
+                        <span>Je veux me deconnecter</span>
+                    </div>
+                </div>
+                <!-- <div class="large-12 column col-instruction" style="margin-top: 3ex;background: #fff;padding: 3ex;    padding-left: 0;
+                padding-right: 0;">
+                    <h2 style="margin: 0;text-align: center;margin-bottom: 13px;">Tu n'es toujours pas visible sur le site ? </h2>
+                  
+                    <div style="padding-left: 5ex">
+                         <h3>Verifies que tu as saisis les informations suivantes</h3>
+                        <div class="ui bulleted list">
+                                <div class="item"> Selectionne ta ville dans l'onglet <b>Détail du compte</b> </div>
+                                <div class="item"> Saisis tous les infos qui te sont demandés dans l'onget <b>Détail du Profil</b> </div>
+                                <div class="item">  Assurez-vous d'avoir cliquer sur le bouton <b>Enregistrer les changements </b> </div>
+                        </div>
+                        <div>
+                                <button class="waves-effect waves-button waves-float" style="background-color: rgb(61, 228, 38);color: #fff" (click)="tutoriel()">Voir le tutoriel</button>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div style="margin-top: 3ex">
+    <app-footer></app-footer>
+</div>
+<!-- Tuto modale -->
+        <div class="div-close" *ngIf="modals"  (click)="closer()">
+            <span>Fermer cette fenetre</span> <i class="fas fa-times" style="font-size: 48px;"></i>
+        </div>
+<div class="ui modal Tuto" id="Tuto" >
+        <div id="texte-hole">
+            <p style="margin-bottom: 0;">
+               {{instruction}}
+            </p>
+            <i class="fas fa-angle-double-down" style="font-size: 36pt"></i>
+        </div>
+    </div>
+    <!-- fin -->

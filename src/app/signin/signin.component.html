@@ -1,0 +1,53 @@
+<section style="margin-top: 3em">
+    <div class="col-form">
+        <div class="col-form-child">
+            <div class="row">
+                <div class="large-5 column side-left">
+
+                </div>
+                <div class="large-7 column side-right">
+                    <div class="txt-hd">
+                        <img src="../../assets/logo.svg" alt="">
+                        <h2> {{FirstTexte}} </h2>
+                        <h3>{{FirstSecond}}</h3>
+                    </div>
+                    <form [formGroup]="myForm" (ngSubmit)='onSubmit()'>
+                        <div class="field-formulaire">
+                            <div class="ui big form">
+                                <div class="fields">
+                                    <div class="field">
+                                        <input #box placeholder="Ton nom au complet" type="text" formControlName="nom" maxlength="20">
+                                        <!--  <div [hidden]="box.value">erreur !</div> -->
+                                    </div>
+                                </div>
+                                <div class="fields" [ngClass]="{'errorName': errorNameExist}">
+                                    <div class="field" [ngClass]="{'ui input error': errorNameExist==true, 'errorName': errorNameExist}">
+                                        <input #email placeholder="Ton email" type="email" formControlName='email' (blur)='checkname(email.value)'>
+                                    </div>
+                                    <div class="ui pointing red basic label" *ngIf="errorNameExist">Cet email existe dèjà !</div>
+                                </div>
+                                <div class="fields">
+                                    <div class="field">
+                                        <input placeholder="Ton mot de passe" type="password" formControlName='password'>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui selection dropdown">
+                                        <input type="hidden" id="specialite" class="specialite" formControlName='status'>
+                                        <i class="dropdown icon"></i>
+                                        <div class="default text">Inscris en tant que...</div>
+                                        <div class="menu">
+                                            <div class="item" data-value="Freelancer">Freelancer</div>
+                                            <div class="item" data-value="Recruteur">Recruteur</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="ui green button" [disabled]="myForm.invalid || disabledBtn"> Je m'inscris </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

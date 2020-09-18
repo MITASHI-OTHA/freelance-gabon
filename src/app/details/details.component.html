@@ -1,0 +1,64 @@
+<section>
+<div class="succes--">
+    <div class="ui positive message">
+        <i class="close icon"></i>
+        <div class="header"> {{headInfos}} </div>
+        <p> {{footerInfos}} </p>
+    </div>
+</div>
+
+<div class="row" style="margin:0">
+    <div class="large-4 column col-info-warn">
+        <!-- profil user component -->
+        <app-profil-user  [message]="message" [head]="head" [color]="color"></app-profil-user>
+    </div>
+    <div class="large-8 column">
+        <div class="ui yellow message" style="margin-top: 14px;" *ngIf="emptyville"> <i class="info circle icon"></i> Attention! N'oublis pas d'ajouter ta ville en dessous du formulaire. Ta ville est obligatoire pour être visible sur le site.</div>
+        <form [formGroup]="myfrom" (ngSubmit)="savedcompte()">
+            <div class="ui form" style="line-height:5ex">
+                <div class="fields">
+                    <div class="field">
+                        <label>Ton nom</label>
+                        <input type="text" placeholder="Ton nom" [value]="noms" formControlName="nom">
+                    </div>
+                    <div class="field">
+                        <label>Ta ville</label>
+                        <select class="ui fluid dropdown" formControlName="ville">
+                                <option value="">Sélectionner une ville</option>
+                            <option *ngFor="let v of villes" [value]="v.Ville"> {{v.Ville}} </option>
+                        </select>
+                    </div>
+                    <div class="field" [ngClass]="{'error': wrong}">
+                        <label>Ton email</label>
+                        <input type="text" placeholder="Donnes ton email" [value]="emails" formControlName="email">
+                        <div *ngIf="wrong" class="ui pointing red basic label"> Cet email existe dèjà </div>
+                    </div>
+                    <input type="hidden" formControlName="photo">
+                </div>
+                <button class="ui blue button" [disabled]="myfrom.invalid || BtnDisabled">Enregistrer les changements</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- popup image -->
+<app-popup-windown></app-popup-windown>
+<!-- fin -->
+
+</section>
+<!-- fenetre modale -->
+<div class="ui modal" id="modal">
+    <i class="close icon"></i>
+    <div class="header">
+        {{variable}}
+    </div>
+    <div class="actions">
+        <div class="ui black deny button">
+            Non, je veux changer
+        </div>
+        <div class="ui positive right labeled icon button garder setName">
+            Oui, je garde
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>
+<!-- fin -->

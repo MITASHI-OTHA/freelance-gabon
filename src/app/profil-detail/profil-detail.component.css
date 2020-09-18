@@ -1,0 +1,11 @@
+.field {
+    width: 70% !important;
+}
+
+.dropdown.item {
+    background: #6666662e !important;
+    border-radius: 0px 5px 5px 0;
+    width: 127px;
+    text-align: center;
+    display: grid;
+}

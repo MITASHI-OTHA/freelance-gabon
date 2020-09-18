@@ -1,0 +1,68 @@
+tr td {
+    padding: 3ex !important
+}
+
+th {
+    border: none !important
+}
+
+.free-info {
+    display: inline-flex;
+}
+
+.free-name {
+    line-height: 88px;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.side-info-employe {
+    display: inline-flex;
+}
+
+.info-name-empl {
+    display: grid;
+    margin-left: 2ex
+}
+
+.info-plus {
+    padding: 3ex;
+    border: 1px solid #66666614;
+    border-top: none;
+    display: inline-flex
+}
+
+.span-title {
+    margin: 0;
+    padding: 0;
+    line-height: 80px;
+    padding-left: 11px;
+    font-size: 12pt;
+}
+
+.info-plus i {
+    font-size: 22pt;
+}
+
+.info-plus div {
+    font-size: 13pt;
+    line-height: 28px;
+    margin-left: 12px;
+}
+
+.td-employ {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.st0 {
+    fill: #21409A;
+}
+
+.st1 {
+    fill: #FFF200;
+}
+
+.st2 {
+    fill: #00A14B;
+}

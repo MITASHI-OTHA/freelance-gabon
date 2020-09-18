@@ -1,0 +1,29 @@
+<div class="profil-slide">
+    <div class="row">
+        <div class="large-12 column col-user-img">
+            <div class="min-user-img" [ngStyle]="{'background': 'url('+ default +')'}" style="background-size: cover !important">
+
+            </div>
+        </div>
+    </div>
+    <div class="row user-infos">
+        <div class="large-12 column parent-list freee" (click)="slideReturn()">
+            <div class="list-action">
+                <i class="fas fa-user-tie"></i> <span>Mon profil</span>
+            </div>
+        </div>
+        <div class="large-12 column parent-list" (click)="notificate()">
+            <div class="list-action">
+                <i class="fas fa-bell"></i> <span>Notifications</span>
+            </div>
+        </div>
+        <div class="large-12 column parent-list" (click)="logout()">
+            <div class="list-action">
+                <i class="fas fa-power-off"></i> <span>Me deconnecter</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="window-opacity" (click)="slideReturn()">
+
+</div>

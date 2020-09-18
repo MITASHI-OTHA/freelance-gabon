@@ -1,0 +1,197 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "myfreelancer": {
+            "root": "",
+            "sourceRoot": "src",
+            "projectType": "application",
+            "prefix": "app",
+            "schematics": {
+                "@schematics/angular:class": {
+                    "spec": false
+                },
+                "@schematics/angular:component": {
+                    "spec": false
+                },
+                "@schematics/angular:directive": {
+                    "spec": false
+                },
+                "@schematics/angular:guard": {
+                    "spec": false
+                },
+                "@schematics/angular:module": {
+                    "spec": false
+                },
+                "@schematics/angular:pipe": {
+                    "spec": false
+                },
+                "@schematics/angular:service": {
+                    "spec": false
+                }
+            },
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/myfreelancer",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "src/tsconfig.app.json",
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets",
+                            "src/avatars"
+                        ],
+                        "styles": [
+                            "src/styles.css",
+                            "node_modules/semantic-ui/dist/semantic.css",
+                            "node_modules/semantic-ui/dist/animate.min.css",
+                            "node_modules/semantic-ui/dist/foundation.css",
+                            "node_modules/semantic-ui/dist/typed.css",
+                            "node_modules/nprogress/nprogress.css",
+                            "src/css/amaran.min.css",
+                            "src/css/all.css",
+                            "src/css/cropper.css",
+                            "src/css/loading-bar.css",
+                            "src/css/quill.snow.css",
+                            "src/css/quill.bubble.css",
+                            "node_modules/slick-carousel/slick/slick.css",
+                            "node_modules/slick-carousel/slick/slick-theme.css",
+                            "src/css/icons.css",
+                            "src/css/component.css",
+                            "src/css/hamburgers.css",
+                            "src/css/js-offcanvas.css",
+                            "src/css/fakeLoader.css",
+                            "node_modules/sweetalert2/dist/sweetalert2.min.css",
+                            "node_modules/semantic-ui/dist/waves.css",
+                            "node_modules/nouislider/distribute/nouislider.css"
+                        ],
+                        "scripts": [
+                            "node_modules/semantic-ui/dist/waves.js",
+                            "src/js/jquery.js",
+                            "src/js/wNumb.js",
+                            "node_modules/nouislider/distribute/nouislider.js",
+                            "node_modules/semantic-ui/dist/semantic.js",
+                            "node_modules/semantic-ui/dist/parallax.js",
+                            "node_modules/semantic-ui/dist/typed.js",
+                            "node_modules/nprogress/nprogress.js",
+                            "src/js/jquery.amaran.js",
+                            "src/js/notifier.js",
+                            "src/js/cropper.js",
+                            "src/js/jquery-cropper.js",
+                            "src/js/loading-bar.js",
+                            "src/js/quill.js",
+                            "node_modules/slick-carousel/slick/slick.js",
+                            "src/js/mo.min.js",
+                            "src/js/demo.js",
+                            "src/js/modernizr.custom.js",
+                            "src/js/jquery.cbpQTRotator.js",
+                            "src/js/slidecanvas.js",
+                            "src/js/js-offcanvas.pkgd.js",
+                            "src/js/trackDevice.js",
+                            "node_modules/sweetalert2/dist/sweetalert2.all.min.js",
+                            "src/js/jquery.preload.js",
+                            "src/js/jquery.jqlouds.min.js",
+                            "src/js/main.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [{
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/environment.prod.ts"
+                            }],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "myfreelancer:build",
+                        "port": 1337
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "myfreelancer:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "myfreelancer:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "src/tsconfig.spec.json",
+                        "karmaConfig": "src/karma.conf.js",
+                        "styles": [
+                            "src/styles.css"
+                        ],
+                        "scripts": [],
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets"
+                        ]
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "src/tsconfig.app.json",
+                            "src/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                }
+            }
+        },
+        "myfreelancer-e2e": {
+            "root": "e2e/",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "myfreelancer:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "myfreelancer:serve:production"
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": "e2e/tsconfig.e2e.json",
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "defaultProject": "myfreelancer"
+}

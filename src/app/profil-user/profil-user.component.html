@@ -1,0 +1,34 @@
+<div style="display: grid">
+    <div style="text-align: center;display: flex" *ngIf="pic">
+        <div class="profil-image" style="margin: auto" [ngStyle]="{'background-image': 'url(' + avatars + ')', 'background-size': 'cover'}">
+
+        </div>
+    </div>
+    <div class="loading" *ngIf="loading">
+        <div class="loadingio-spinner-spin-gho3sreyi1d"><div class="ldio-8opqdkau3pw">
+            <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
+            </div></div>
+            
+    </div>
+    <input style="display: none" class="photo" type="file" name="image" (change)="onChange($event)">
+    <div style="text-align: center">
+        <button class="ui mini blue button btn-change-photo" [disabled]="loading" style="margin-top: 1ex;
+      width: 35%">Changer ma photo</button>
+    </div>
+    <div [hidden]="Recru">
+        <div class="label" style="text-align: center;padding: 1ex;
+        margin-top: 8px;background: #9e9e9e14;">Complete ton profil</div>
+        <div class="col-load">
+            <div class="ui indicating progress" id="bar">
+                <div class="bar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui icon message" style="border-top: 1px solid#6666;border-radius: 0px;box-shadow: none;margin-top: 24px;margin: 0;" [ngStyle]="{'background': color}" [ngClass]="{'invisible': Recru}">
+    <i class="inbox icon"></i>
+    <div class="content">
+        <div class="header"> {{head}} </div>
+        <p> {{message}} </p>
+    </div>
+</div>

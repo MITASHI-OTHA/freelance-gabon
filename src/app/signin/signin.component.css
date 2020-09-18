@@ -1,0 +1,71 @@
+body {
+    background: #9e9e9e33 !important;
+}
+.col-form {
+    width: 100%;
+    display: flex
+}
+
+.col-form-child {
+    margin: auto;
+    width: 60%;
+    background: #fff;
+    height: 600px;
+}
+
+.head-bk {
+    background: #6666667a;
+    padding-bottom: 5px
+}
+
+.side-left {
+    height: 600px;
+    background: url('../../assets/side-bg-smlr.jpg') center no-repeat;
+    background-size: cover
+}
+
+.errorName {
+    display: grid !important
+}
+
+[hidden] {
+    display: none !important
+}
+
+.txt-hd {
+    display: grid;
+    text-align: center;
+    margin-top: 3em;
+}
+
+.txt-hd img {
+    width: 60px;
+    margin: auto
+}
+
+.txt-hd h2 {
+    margin-top: 7px
+}
+
+.field-formulaire .ui.big.form {
+    margin: auto;
+    width: 52%;
+}
+
+.field-formulaire .field {
+    width: 100%;
+}
+
+.field-formulaire {
+    text-align: center;
+    display: flex;
+    margin-top: 1em;
+}
+
+.txt-hd h3 {
+    margin-top: 0;
+    padding-left: 71px;
+    font-size: 11pt;
+    padding-right: 61px;
+    color: #666;
+}

@@ -1,0 +1,234 @@
+<div [ngClass]="{'sect-proj': true}" class="viewProject">
+    <div [ngClass]="{'tab-project': true}">
+        <h3 style="font-size: 23pt;color: #595973">Les derniers jobs en freelance</h3>
+        <div class="row">
+            <div class="large-8 medium-8 small-12 column" style="padding-left:0;margin-bottom: 12px;">
+                <div class="ui icon input" style="width: 50%;">
+                    <input type="text" placeholder="Rechercher un projet..." [(ngModel)]="searchText">
+                    <i class="inverted circular search link icon" style="background-color: #ff1f87 !important"></i>
+                </div>   
+            </div>
+            <div class="large-4 medium-4 column" style="margin-top: 11px;">
+                <ul class="col-model">
+                    <li [ngClass]="{'active': gride}" (click)="gride = true">
+                        <i class="fas fa-th-large"></i>
+                        <span>
+                            Grille
+                        </span>
+                    </li>
+                    <li (click)="liste()" [ngClass]=" {'active': !gride}">
+                        <i class="fas fa-th-list"></i>
+                        <span>Liste</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-tab-project"  [ngClass]=" {'show': !gride} ">
+            <table class="ui blue table tab-list-proj">
+                <thead>
+                    <tr>
+                        <th>Missinon en Freelance</th>
+                        <th class="center aligned">Type de mission</th>
+                        <th class="center aligned">Categorie(s)</th>
+                        <th class="center aligned">Devis</th>
+                        <th class="center aligned">Budget</th>
+                    </tr>
+                </thead>
+                <div *ngIf="fakeDimmer">
+                    <img class="ui wireframe image" src="../assets/paragraph.png" style="width: 100%;opacity: 0.2;">
+                    <img class="ui wireframe image" src="../assets/paragraph.png" style="width: 100%;opacity: 0.2;margin-top: 3ex;padding-bottom: 3ex;">
+                </div>
+                <tbody *ngIf="!fakeDimmer">
+                    <tr *ngFor="let projet of pagedItems | filter: searchText; let i = index;">
+                        <!-- Mission -->
+                        <td [ngStyle]="{background: getRibon(projet.etat).back}">
+                            <div *ngIf="projet.etat !== '0'" class="ui ribbon label" [ngStyle]="{background: getRibon(projet.etat).couleur}" style="width: 55%" [innerHTML]="getRibon(projet.etat).texte"></div>
+                            <h3 [routerLink]="[projet.id, projet.titre, i]" style="cursor: pointer;outline:none"> {{projet.titre}} </h3>
+                            <div class="time-pub">
+                                <i class="far fa-clock"></i>
+                                <span>{{projet.relatif}}</span>
+                            </div>
+
+                        </td>
+                        <!-- Type de projet -->
+                        <td class="center aligned" [ngStyle]="{background: getRibon(projet.etat).back}">
+                            <span>{{projet.type}}</span>
+                        </td>
+                        <!-- Categorie -->
+                        <td class="center aligned" [ngStyle]="{background: getRibon(projet.etat).back}">
+                            <span>
+                            <span> <a class="ui label" [ngStyle]="{'background-color':projet.couleur, 'border-color': projet.couleur, 'color': '#fff'}" >{{projet.categorie}}</a></span>
+                            </span>
+                        </td>
+                        <!-- Nombre de devis -->
+                        <td class="center aligned" [ngStyle]="{background: getRibon(projet.etat).back}">
+                            <span>
+                              <span>{{projet.devis}}</span>
+                            </span>
+                        </td>
+                        <!-- Budget par heure -->
+                        <td class="center aligned budget" [ngStyle]="{background: getRibon(projet.etat).back}">
+                            <span>
+                              <h4>{{projet.budget}} Fcfa/jour</h4>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="pager.pages && pager.pages.length" class="ui borderless menu" style="margin-top:0;border-top:none;border-radius: 0px">
+                <a class="item" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(1)">Premiere page</a>
+                <a class="item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" (click)="setPage(page)">{{page}}</a>
+                <a class="item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.totalPages)">Derniere page</a>
+            </div>
+        </div>
+        <!-- liste -->
+        <div class="row" [ngClass]=" {'show': gride} " >
+            <div class="large-12 column sub-list">
+                <div class="col-liste">
+                    <div class="row" style="margin: 0;background-color: #fff;border-radius: 4px;box-shadow: 0 2px 12px rgba(0,0,0,0.12);">
+                        
+                        <div *ngFor="let projet of pagedItems; let i = index" [id]="i%2" class="large-12 column sub-list" [ngClass]="{'gray': i%2 === 0}">
+                            <div class="job-list">
+                                <div class="job-list-detail">
+                                    <div class="job-listing-company-logo">
+                                        <i class="fas fa-briefcase" style="font-size: 40px;"></i>
+                                    </div>
+                                    <div class="job-listing-description">
+                                        <h3 class="job-listing-title">
+                                            {{projet.titre}}
+                                        </h3>
+                                        <div class="job-listing-footer">
+                                            <ul>
+                                                <li>
+                                                    <i class="fas fa-user-tie"></i>
+                                                    {{projet.auteur}}
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-map-marker-alt"></i>
+                                                    {{projet.type}}
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-money-bill-alt"></i>
+                                                    {{projet.budget}} Fcfa/jour
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-clock"></i>
+                                                    {{projet.relatif}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                        <button class="medium ui button view-job-btn" style="background-color: #3de426;color: #fff" [routerLink]="[projet.id, projet.titre, i]"> Consulter </button>
+
+                            </div>
+                        </div>
+                     
+                    </div>
+                </div>
+            </div>
+            <div class="large-12 column page--" style="margin-top: 2ex">
+                <div *ngIf="pager.pages && pager.pages.length" style="margin-top:0;border-top:none;border-radius: 0px;cursor: pointer;">
+                    <a class="item" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(1)"><i class="fas fa-angle-double-left" style="font-size: 24px;"></i></a>
+                    <a class="item" style="margin-right: 3ex;font-size: 14pt;margin-left: 3ex" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" (click)="setPage(page)">{{page}}</a>
+
+                    <a class="item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.totalPages)"><i class="fas fa-angle-double-right" style="font-size: 24px"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- fin -->
+    </div>
+</div>
+
+<div style="display: flex;" class="scrollUsers">
+    <div class="col-free-append" [ngClass]="{'haut':fakeDimmer}" >
+        <h3 style="font-size: 23pt;color: #595973;margin-bottom: .75em;margin-top: 0;    padding-bottom: 0 !important;
+        margin-bottom: 0;"> {{Titles}} </h3>
+        <div style="display: flex">
+            <!-- <ul class="list-push-freelancers">
+                <li class="active" (click)="byRec()"> <span>Freelancers recents </span> </li>
+                <li (click)="byExp()"> <span>Les + experimentés</span> </li>
+                <li (click)="byQualif()"> <span>Les + qualifiés</span></li>
+                <li (click)="byBoost()"> <span>Les + Boostés</span></li>
+                <li> <span>Les recommandés</span></li>
+                <li> <span>Les commentés</span></li> 
+            </ul> -->
+            <div class="view-next-arrow" [routerLink]="['tous les freelancers']" style="outline: none">
+                <p>Voir tous les freelancers</p>
+                <i class="fas fa-arrow-right" style="font-size: 28px;"></i>
+            </div>  
+        </div>
+       
+        <div class="row col-slice-free">
+            <div *ngFor="let user of itemFree; let lats = last" class="large-3 medium-12 small-12 column" style="margin-top: 2em !important;position: relative;">
+                {{lats? popup() : ''}}
+                <div class="ui link cards" style="margin: 0px !important;" [routerLink]="[user.id, user.nom]">
+                    <div class="label-dispo">
+                        <a class="ui label myh" [attr.data-content]="getStatusText(user.dispo, user.nom).texte">
+                            <a class="ui empty circular label" [ngClass]="{'green': user.dispo, 'red': !user.dispo}"></a> {{getStatusText(user.dispo, user.nom).status}}
+                        </a>
+                    </div>
+                    <div class="card" style="margin:auto;height: 427px;box-shadow: 0 0 25px rgba(0,0,0,0.1);">
+                        <div class="image" [ngStyle]="{'background': 'url(' + user.photo + ') center no-repeat', 'background-size': 'cover', 'height': '280px'}">
+                            <!-- <img src='avatars/{{user.photo}}'> -->
+                        </div>
+                        <div class="content" style="padding-bottom: 0;position: relative;padding: 0">
+                            <div class="col-pad" style="padding: 14px;">
+                                <div class="header">{{controlName(user.nom)}}</div>
+                                    <div class="meta">
+                                        <div class="extra">Évaluation:
+                                            <i class="fas fa-star" style="color: rgb(66, 133, 244)" *ngFor="let i of range(user.evaluation)"></i>
+                                        </div>
+                                        <div>
+                                            <a class="ui label" *ngFor="let skill of user.expsp" style="padding:5px;float: left;margin: 2px;background-color:rgba(0, 0, 0, 0.4) !important;color: #fff">
+                                                    {{skill}}
+                                            </a>
+                                        </div>
+                                    </div>    
+                            </div>
+                            <div class="row footer-col-card">
+                                <div class="large-6 column footer-card">
+                                    <p [innerHTML]="getMetier(user.metier)"></p>
+                                </div>
+                                <div class="large-6 column footer-card" style="  border-left: 1px solid #6666660a">
+                                    {{user.prix}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="large-12 column" style="text-align: center;margin-top: 5ex">
+                <button class="medium ui button" style="background-color: #3de426;color: #fff" [routerLink]="['tous les freelancers']" [hidden]="!btnAll"> Voir Tous les Freelancers </button>
+            </div> -->
+        </div>
+        <!-- <div class="row" style="margin-top: 5ex">
+            <div class="large-12 column">
+                <h3 style="font-size: 23pt;color: #595973">Les catégories de métiers</h3>
+            </div>
+            <div class="row">
+                <div class="large-4 column list-metier">
+                    <ul style="padding-left: 15px">
+                        <li>Développeurs & data scientists</li>
+                        <li>Administrateurs systèmes & DBA</li>
+                        <li>Marketing & analytics</li>
+                    </ul>
+                </div>
+                <div class="large-4 column list-metier">
+                    <ul>
+                        <li>Chefs de projet & coachs agile</li>
+                        <li>Business & stratégie</li>
+                        <li>Motion designers & réalisateurs</li>
+                    </ul>
+                </div>
+                <div class="large-4 column list-metier">
+                    <ul>
+                        <li>
+                            Rédacteurs & community managers</li>
+                        <li>Graphistes, designers & photographes</li>
+                    </ul>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>

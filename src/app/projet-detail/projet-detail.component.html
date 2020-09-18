@@ -1,0 +1,43 @@
+<div class="succes--">
+    <div class="ui positive message">
+        <i class="close icon"></i>
+        <div class="header"> {{headInfos}} </div>
+        <p> {{footerInfos}} </p>
+    </div>
+</div>
+<div class="row" style="margin:0;background: #f8f8f9;">
+    <div class="large-4 column col-info-warn">
+        <!-- profil user component -->
+        <app-profil-user></app-profil-user>
+    </div>
+    <div class="large-8 column" style="background: #ffffff">
+        <div *ngIf="empty">
+            <section class="empt">
+                <h1> {{msg}} </h1>
+            </section>
+
+        </div>
+        <div *ngIf="!empty">
+            <div *ngFor="let proj of projets" class="item-projet">
+                <h2>{{proj.titre}}</h2>
+                <p>
+                    {{proj.description}}
+                </p>
+                <div>
+                    <h3> Demandé {{proj.temps}} </h3>
+                    <a class="item">
+                        <div class="ui yellow horizontal label"> {{proj.categorie}} </div>
+                    </a>
+                    <a class="item">
+                        <div class="ui red horizontal label"> {{proj.etat}} </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- popup image -->
+<app-popup-windown></app-popup-windown>
+<!-- fin -->

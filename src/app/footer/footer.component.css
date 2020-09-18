@@ -1,0 +1,40 @@
+.xvx a {
+    display: block;
+    float: left;
+    font-size: 13px;
+    margin: 0 7px 7px 0 !important;
+}
+
+.footer {
+    background-image: linear-gradient(60deg, #061c2e 0, #041625 50%, #02121f 50%, #082033 100%);
+}
+
+.column ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.form input {
+    width: 60% !important;
+}
+
+.form p,
+label {
+    color: #fff
+}
+
+.column h3 {
+    color: #fff
+}
+
+.column ul li {
+    color: rgba(158, 158, 158, 0.7098039215686275);
+    padding-left: 0;
+    line-height: 42px;
+    font-size: 11pt;
+}
+
+.column ul li:hover {
+    color: #fff !important;
+    cursor: pointer;
+}

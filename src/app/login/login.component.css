@@ -1,0 +1,34 @@
+.col-div-form {
+    padding-left: 0 !important;
+}
+body {
+    background: #9e9e9e33 !important;
+    display: none
+}
+.col-form {
+    width: 500px;
+    background: #fff;
+    height: 435px;
+}
+
+.col-form h3 {
+    margin-top: 0 !important;
+    padding: 2ex !important;
+}
+
+.lat-back {
+    background: url('../../assets/fashion-man-mobile-phone-212289.jpg') center no-repeat;
+    background-size: cover;
+    height: 435px;
+}
+
+.col-hd {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+    color: #000;
+}
+
+body {
+    height: auto !important;
+}

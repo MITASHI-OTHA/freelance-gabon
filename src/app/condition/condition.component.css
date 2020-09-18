@@ -1,0 +1,13 @@
+.parallax-windows2 {
+    min-height: 100%;
+    background: transparent;
+}
+.col-off {
+    background: #666;
+    padding-bottom: 11px;
+}
+.item {
+    margin-top: 3ex;
+    font-size: 12pt !important;
+    line-height: 2.142857em !important;
+}

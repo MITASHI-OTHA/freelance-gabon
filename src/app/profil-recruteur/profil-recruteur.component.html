@@ -1,0 +1,245 @@
+<app-slide></app-slide>
+<div class="bkHeader">
+    <app-entete></app-entete>
+</div>
+<div class="row">
+    <div class="large-12 column" style="margin-top: 12em">
+        <h1 id="monH">Mes informations</h1>
+        <div class="ui info message" style='width:60%;margin-left: 9ex;'>
+            <i class="close icon"></i>
+            <div class="header">Editez votre profil</div>
+            <p>
+                <b>Editez votre profil en parcourant chaque onglet en dessous</b>. Ajoutez votre ville et votre photo de profil (facultatif). Publiez une offre de projet en precisant le prix et le delai pour réaliser la mission.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<div class="row" style="margin:0;margin-left: 5em;margin-top: 4ex">
+    <div class="large-8 column">
+        <div class="list-actions-user">
+            <div class="sub-list-actions-user" style="width: 100%">
+                <div class="row" style="margin: 0;border-bottom: 2px solid #66666617;">
+                    <div class="large-4 column items-user activate" (click)="openTab($event, 'London')">
+                        <div class="items-use">
+                            <i class="fas fa-list-alt" style="font-size: 48px;"></i>
+                            <h3>Detail du compte</h3>
+                        </div>
+                    </div>
+                    <div class="large-4 column middle-item items-user" (click)="openTab($event, 'Paris')">
+                        <div class="items-use">
+                            <i class="fas fa-edit" style="font-size: 48px;"></i>
+                            <h3>Publier un projet</h3>
+                        </div>
+                    </div>
+                    <div class="large-4 column items-user" (click)="openTab($event, 'Tokyo')">
+                        <div class="items-use">
+                            <i class="fas fa-file-signature" style="font-size: 48px;"></i>
+                            <h3>Detail de vos projets</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin: 0">
+                    <div class="large-4 column col-info-warn">
+                        <app-profil-user [Recru]="rec"></app-profil-user>
+                    </div>
+                    <div class="large-8 column">
+                        <div id="London" class="tabcontent" style="display: block;">
+                            <form (ngSubmit)="onSubmit(form)" class="ui form" style="display: grid;" #form="ngForm">
+                                <div class="field">
+                                    <label>Votre nom</label>
+                                    <input type="text" name="nom" placeholder="Ton nom" [ngModel]="noms" required>
+                                </div>
+                                <div class="field">
+                                    <label>Votre email</label>
+                                    <input type="email" name="email" placeholder="Ton émail" [ngModel]="emails" required>
+                                </div>
+                                <div class="field">
+                                    <label>Votre ville</label>
+                                    <select name="ville" ngModel required>
+                                        <option value="">Quel est ta ville ?</option>
+                                        <option *ngFor="let ville of villes" [value]="ville.Ville">{{ville.Ville}}</option>
+                                      </select>
+                                </div>
+                                <button class="ui green button" type="submit" [disabled]="form.invalid || desactivate" style="width: 20%">Mettre à jour</button>
+                            </form>
+                        </div>
+
+                        <div id="Paris" class="tabcontent">
+                            <h2 style="margin-top:0">Renseignez et publier votre projet</h2> <br>
+                            <div class="ui message" *ngIf="error || success" [ngClass]="{'red': error, 'green': success}">{{message}}</div>
+                            <div class="row">
+                                <div class="large-12 column">
+                                    <form (ngSubmit)="sendProjet(form2)" class="ui form" style="display: grid" #form2="ngForm">
+                                        <div class="field">
+                                            <label>Titre du projet</label>
+                                            <input type="text" name="titre" placeholder="Saisissez le titre" ngModel required>
+                                        </div>
+                                        <div class="field">
+                                            <label>Budget</label>
+                                            <input type="number" name="budget" placeholder="Votre prix" min="1" ngModel required>
+                                        </div>
+                                        <div class="field">
+                                            <label>Compétences Réquises</label>
+                                            <div class="ui fluid multiple search selection dropdown">
+                                                <input #compt type="hidden" name="receipt" [ngModel]="compt.value" required>
+                                                <i class="dropdown icon"></i>
+                                                <div class="default text">Aucune compétence</div>
+                                                <div class="menu">
+                                                    <div class="item" *ngFor="let c of competence" [attr.data-value]="c.competence" [attr.data-text]="c.competence"> {{c.competence}} </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label>Catégorie</label>
+                                            <select name="categories" ngModel required>
+                                                  <option value="">Aucune</option>
+                                                  <option *ngFor="let cat of categorie; let i = index" [value]="i">{{cat.categorie}}</option>
+                                                </select>
+                                        </div>
+                                        <div class="field">
+                                            <label>Type de projet</label>
+                                            <select name="type" ngModel required>
+                                                      <option value="">Aucune</option>
+                                                      <option value="à distance">à distance</option>
+                                                      <option value="Sur place">sur place</option>
+                                                    </select>
+                                        </div>
+                                        <div class="field">
+                                            <div [hidden]="shows== false">
+                                                <div data-preset="energy" id="ldbar" class="ldBar label-center" data-value="0"></div>
+                                            </div>
+                                            <label>Pièce jointe</label>
+                                            <input #val type="file" name="attachement" [hidden]="true" (change)="fileEvent($event)" id="attachement" [ngModel]="val.value">
+                                            <i class="fas fa-paperclip attachement" style="font-size: 48px;cursor: pointer;"></i>
+                                            <div class="ui left pointing basic label" [ngClass]="{'red': notif.color == 'red', 'green': notif.color == 'green' }" *ngIf="notif.res == true" style="position: absolute">{{notif.message}}</div>
+                                        </div>
+                                        <div class="field">
+                                            <label>Décrivez votre projet en détail</label>
+                                            <div style="margin-top:5px">
+                                                <div id="editor">
+                                                </div>
+                                                <div class="ui pointing red basic label" *ngIf="apropos"> Decrivez-votre projet en détail ! </div>
+                                            </div>
+                                        </div>
+                                        <button class="ui button" type="submit" [disabled]="form2.invalid || desactivated" style="width: 30%">Publier</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="Tokyo" class="tabcontent">
+                            <div *ngIf="!allProjets">
+                                <h1>
+                                    Vous n'avez encore publié aucun projet
+                                </h1>
+                            </div>
+                            <div *ngIf="allProjets">
+                                <h2>Vos projets</h2>
+                                <div class="row">
+                                    <div class="large-12 column liste-projet" *ngFor="let proj of allProjets; let last = last; let i = index" [attr.ready]="last ? false: true" [ngStyle]="{'background-color': getColors(proj.etat)}">
+                                        <span>{{last ? myAlert(): ''}}</span>
+                                        <div class="ui text menu" style="position: absolute;right: 0;">
+                                            <div class="item">
+                                                <div class="ui right dropdown item">Plus <i class="dropdown icon"></i>
+                                                    <div class="menu">
+                                                        <div class="item" *ngIf="proj.etat == 0" (click)="terminer(proj.projetID, 1, proj.etat)">Ce projet est accompli </div>
+                                                        <div class="item" *ngIf="proj.etat == 1" (click)="terminer(proj.projetID, 0, proj.etat)">Projet non accompli</div>
+                                                        <div class="item" *ngIf="proj.etat == 2" (click)="terminer(proj.projetID, 0, 1)">Retablir ce projet</div>
+                                                        <div class="item" *ngIf="proj.etat == 1 || proj.etat == 0" (click)="terminer(proj.projetID, 2, 2)">Abandonner ce projet</div>
+                                                        <div class="item" (click)="supprimer(proj.projetID)">Supprimer ce projet</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="inline-hd" style="display: inline-flex;color:rgba(102, 102, 102, 0.7019607843137254);">
+                                            <span style="margin: 0;font-weight: bold;"> {{proj.titre}} </span>
+                                            <span>
+                                             | <div class="ui tiny label"> {{proj.categories}} </div>
+                                          </span>
+                                            <span>
+                                             | <i class="fas fa-coins"></i> {{proj.budget}}
+                                            </span>
+                                            <span> 
+                        |  <i class="fas" [ngClass]="{'fa-door-open': proj.etat == 0, 'fa-door-closed': proj.etat == 1, 'fa-window-close': proj.etat == 2}"  style="font-size: 19px;"></i>
+                                               <a class="ui left pointing basic label" *ngIf="proj.etat == 0">Projet ouvert</a>
+                                               <a class="ui left pointing basic label" *ngIf="proj.etat == 1">Projet fermé</a>
+                                               <a class="ui left pointing basic label" *ngIf="proj.etat == 2">Projet abandonné</a>
+                                            </span>
+                                        </div>
+
+                                        <p [innerHTML]="proj.description" class="descript">
+                                        </p>
+                                        <div style="padding-bottom: 8px;opacity: 0.5">
+                                            <i class="fas fa-clock" style="font-size: 18px;"></i> <span> Publié {{proj.relative}} </span>
+                                        </div>
+                                        <div (click)="seen(proj.projetID, proj.titre ,i)">
+                                            <a class="ui blue label">consulter le projet</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="large-4 column" style="background: #fff;padding: 3ex">
+        <div class="row">
+            <div class="large-12 column right-col">
+                <i class="fas fa-key"></i>
+                <span> 
+                        Changer mon mot de passe
+                </span>
+            </div>
+            <div class="large-12 column right-col" style="display: inline-flex;margin-top: 8ex;">
+                <i class="fas fa-power-off"></i>
+                <span> 
+                       Je me deconnecte
+                    </span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal 1  -->
+<div class="ui basic modal" id="confirmation">
+    <div class="ui icon header">
+        {{header}}
+    </div>
+    <div class="content">
+        <p>{{contexte}}</p>
+    </div>
+    <div class="actions">
+        <div class="ui red basic cancel inverted button">
+            <i class="remove icon"></i> Non
+        </div>
+        <div class="ui green ok inverted button" (click)="yes()">
+            <i class="checkmark icon"></i> Oui
+        </div>
+    </div>
+</div>
+
+
+<!--  -->
+<!-- fenetre modale -->
+<div class="ui modal" id="modal">
+    <i class="close icon"></i>
+    <div class="header">
+        {{variable}}
+    </div>
+    <div class="actions">
+        <div class="ui black deny button">
+            Non, je veux changer
+        </div>
+        <div class="ui positive right labeled icon button garder setName">
+            Oui, je garde
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>
+<!-- fin -->
+<!-- popup image -->
+<app-popup-windown></app-popup-windown>
+<!-- fin -->
